@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center"> CÁMARA </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+
+  <div class="ion-text-center">
+    <br>
+    <!--se manda a llamar a cada funcion al hacer click sobre los botones-->
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="captureImage()">Capturar imagen</ion-button>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="recordVideo()">Capturar video</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <br><br>
+    <ion-label>Elementos guardados</ion-label>
+    <br>
+    <!--se desplegara la lista de imagenes o videos-->
+    <ion-list>
+
+      <ion-item-sliding *ngFor="let f of files">
+        <!--al dar click sobre el elemento se llamara la funcion de abrir el archivo-->
+        <ion-item (click)="openFile(f)">
+
+          <!--Dependiendo del formato del archivo se le asignara un icono-->
+          <ion-icon name="image" slot="start" *ngIf="f.name.endsWith('jpg')"></ion-icon>
+          <ion-icon name="videocam" slot="start" *ngIf="f.name.endsWith('MOV')||f.name.endsWith('mp4')"></ion-icon>
+
+          <ion-label class="ion-text-wrap">{{f.name}}<p>{{f.fullPath}}</p>
+          </ion-label>
+
+        </ion-item>
+
+        <!--el item es de tipo slide para poder eliminarlo llamando a la funcion
+        se muestra el icono de trash en color rojo-->
+        <ion-item-options side="end">
+
+          <ion-item-option (click)="deleteFile(f)" color="danger">
+            <ion-icon name="trash" slot="icon-only"></ion-icon>
+          </ion-item-option>
+
+        </ion-item-options>
+
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+
+</ion-content>
