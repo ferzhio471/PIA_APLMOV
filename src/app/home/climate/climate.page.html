@@ -1,12 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class ="ion-text-center">CLIMA</ion-title>
+    <!--ion title con la clase de ion-text-center para el título de la pestaña-->
+    <ion-title class="ion-text-center">CLIMA</ion-title>
   </ion-toolbar>
 </ion-header>
-
+<!---un ion-content para el contenido, con clases para el formato del .scss, un ngIf para que el valor sea true si devuelve el clima-->
 <ion-content padding class="clima">
   <ion-grid *ngIf="climate">
     <ion-row>
+      <!--una ion-row para centrar la locación, el ícono, la descripción y temperatura del lugar basado en sus coordenadas-->
+      -->
       <ion-col width-50 offset-25>
         <h2 class="location">{{climate.location.name}} </h2>
         <div class="icon"><img src="{{climate.current.condition.icon}}" alt=""></div>
@@ -16,6 +19,7 @@
 
     </ion-row>
     <ion-row>
+      <!---varias ion-item con letras en negritas seguidas de un espacio, donde muestra los datos sobrer el clima y las variables requeridas, llamadas del .ts -->
       <ion-col width-100>
         <ion-list>
           <ion-item>
@@ -32,7 +36,7 @@
           </ion-item>
           <ion-item>
             <strong>Presión atmosférica :</strong>&nbsp; {{climate.current.pressure_mb}}mb
-         </ion-item>
+          </ion-item>
         </ion-list>
       </ion-col>
 

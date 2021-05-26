@@ -1,6 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
-import { Climate, Current } from './climate';
+import { Climate, Current } from './climate';// se hace import de climate y current
 
 @Component({
   selector: 'app-climate',
@@ -8,35 +8,35 @@ import { Climate, Current } from './climate';
   styleUrls: ['./climate.page.scss'],
 })
 export class ClimatePage implements OnInit {
-  apikey = "09d1a62c194e4ac89a0205805212505";
+  apikey = "09d1a62c194e4ac89a0205805212505"; //API KEY que se utiliza en el request a la API
   url = "http://api.weatherapi.com/v1";
 
   climate: Climate;
 
-  latitud: number;
+  latitud: number;//se declaran las variables de longitud y latitud que nos darán la temperatura de la zona en cuestión
   longitud: number;
 
-  constructor(
+  constructor(//se agrega un constructor con una variable private de la geolocalización
     private geolocation: Geolocation
   ) { }
 
-  ngOnInit() {
+  ngOnInit() {//se crea una variable ngOnInit que trae el resultado de getLocation, el cual contiene una tarea más pesada que no se recomienda agregar al constructor
     this.getLocation();
 
   }
 
   private async getLocation() {
-    const rta = await this.geolocation.getCurrentPosition();
-    this.latitud = rta.coords.latitude;
+    const rta = await this.geolocation.getCurrentPosition();//se llama al método donde está la posición actual del usuario en la librería de geolocalización, y se obtiene la posición del usuario para guardar 
+    this.latitud = rta.coords.latitude;         //estos datos en la variable const rta, la cual devolverá las coordenadas de latitud y longitud respectivamente
     this.longitud = rta.coords.longitude;
     this.getWheatherData();
   }
 
-  getWheatherData()
+  getWheatherData() //se crea un fetch para acceder a una parte del código de HTTP, en el cual se devolverán los valores de la url, del apikey, latitud y longitud y se mostrarán en pantalla, junto con los headers
   {
     fetch(`${this.url}/current.json?key=${this.apikey}&q=${this.latitud},${this.longitud}&aqi=no`, {
       "method": "GET",
-      "headers": {
+      "headers": { //headers recomendados de la documentación de la API
         "Transfer-Encoding": "chunked",
         "Connection": "keep-alive",
         "Vary": "Accept-Encoding",
@@ -57,9 +57,9 @@ export class ClimatePage implements OnInit {
         "mode": 'cors',
       }
     })
-    .then(response => response.json())
-    .then(data => {
-      this.climate = data;
+    .then(response => response.json())//el fetch regresa un response, donde la respuesta se convierte a json para poderse interpretar
+    .then(data => {//una vez obtenido el json, se asigna a la variable de climate
+      this.climate = data; 
     })
     .catch(err => {
       console.error(err);

@@ -1,3 +1,4 @@
+//se especifican los tipos de variables, en este caso los de location, que incluye todos los lugares disponibles con sus coordenadas
 export interface Location {
   name: string;
   region: string;
@@ -9,12 +10,14 @@ export interface Location {
   localtime: string;
 }
 
+//aquí están los de la condición climática dependiendo de la locación en la que se encuentre el usuario y un pequeño ícono que muestra el estado del clima
 export interface Condition {
   text: string;
   icon: string;
   code: number;
 }
 
+//en current están todos los valores secundarios del clima, llovizna, viento, presión atmosférica, temperatura, etc
 export interface Current {
   last_updated_epoch: number;
   last_updated: string;
@@ -42,7 +45,7 @@ export interface Current {
 
 }
 
-
+// en climate se inicializan tanto la variable de location como la de current de todo el contenido del ts
 export interface Climate {
   location: Location;
   current: Current;
