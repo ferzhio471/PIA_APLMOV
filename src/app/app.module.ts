@@ -15,37 +15,8 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx'
 
-import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';//como es un provider, agregarlo también dentro de la sección @NgModule dentro de providers.
 
-
-
-/*@NgModule({
-  declarations: [
-    AppComponent,
-    HomePage
-  ],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    IonicStorageModule.forRoot(),
-    AppRoutingModule
-  ],
-  bootstrap: [AppComponent],
-  entryComponents: [
-    AppComponent,
-    HomePage
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    //en caso de obtener error en el MediaCapture correr el siguiente comando
-    //npm i @ionic-native/core
-    MediaCapture,
-    Media,
-    File
-  ]
-})*/
 
 
 @NgModule({
