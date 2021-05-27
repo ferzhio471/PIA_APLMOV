@@ -16,15 +16,17 @@ import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx'
 
 import { Geolocation } from '@ionic-native/geolocation/ngx';//como es un provider, agregarlo también dentro de la sección @NgModule dentro de providers.
-
+import {SQLite} from '@ionic-native/sqlite/ngx';
+import { HttpClientModule } from '@angular/common/http';
+import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [StatusBar, SplashScreen, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Media, File, MediaCapture, ImagePicker, StreamingMedia, PhotoViewer, Geolocation
+    Media, File, MediaCapture, ImagePicker, StreamingMedia, PhotoViewer, Geolocation, SQLite, SQLitePorter
     //en caso de obtener error en el MediaCapture correr el siguiente comando
     //npm i @ionic-native/core
   ],

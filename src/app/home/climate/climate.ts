@@ -1,3 +1,4 @@
+
 //se especifican los tipos de variables, en este caso los de location, que incluye todos los lugares disponibles con sus coordenadas
 export interface Location {
   name: string;

@@ -21,13 +21,15 @@
 Una vez hecho esto, se deberán ejecutar los siguientes comandos:
 
  - npm install
- - npm i @ionic-native/media-capture @ionic-native/file @ionic-native/media @ionic-native/streaming-media @ionic-native/photo-viewer @ionic-native/image-picker
+ - npm i @ionic-native/media-capture @ionic-native/file @ionic-native/media @ionic-native/streaming-media @ionic-native/photo-viewer @ionic-native/image-picker @ionic-native/sqlite @ionic-native/sqlite-porter
  - ionic cordova plugin add cordova-plugin-media-capture
  - ionic cordova plugin add cordova-plugin-file
  - ionic cordova plugin add cordova-plugin-media
  - ionic cordova plugin add cordova-plugin-streaming-media
  - ionic cordova plugin add com-sarriaroman-photoviewer
  - cordova plugin add cordova-android-support-gradle-release
+ - ionic cordova plugin add cordova-sqlite-storage
+ - ionic cordova plugin add uk.co.workingedge.cordova.plugin.sqliteporter
 
 Abrir Android studio y realizar lo siguiente: 
 Ir a File > Settings > Plugins > Buscar "PhoneGap/Cordova" > Dar click en Install > Aplicar cambios > Cerrar pestaña

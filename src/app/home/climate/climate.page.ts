@@ -1,6 +1,8 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import { Climate, Current } from './climate';// se hace import de climate y current
+import {LocationDBService} from './climateDB.service';
+import {Locations} from './location';
 
 @Component({
   selector: 'app-climate',
@@ -12,17 +14,19 @@ export class ClimatePage implements OnInit {
   url = "http://api.weatherapi.com/v1";
 
   climate: Climate;
+  locations: Locations;
 
   latitud: number;//se declaran las variables de longitud y latitud que nos darán la temperatura de la zona en cuestión
   longitud: number;
 
   constructor(//se agrega un constructor con una variable private de la geolocalización
-    private geolocation: Geolocation
+    private geolocation: Geolocation,
+    private locationDBService: LocationDBService
   ) { }
 
   ngOnInit() {//se crea una variable ngOnInit que trae el resultado de getLocation, el cual contiene una tarea más pesada que no se recomienda agregar al constructor
     this.getLocation();
-
+    this.locationDBService.getLocations();
   }
 
   private async getLocation() {
@@ -60,6 +64,7 @@ export class ClimatePage implements OnInit {
     .then(response => response.json())//el fetch regresa un response, donde la respuesta se convierte a json para poderse interpretar
     .then(data => {//una vez obtenido el json, se asigna a la variable de climate
       this.climate = data; 
+      this.locations = data;
     })
     .catch(err => {
       console.error(err);
